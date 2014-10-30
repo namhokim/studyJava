@@ -52,7 +52,7 @@ public class Node {
 		
 		Node c = this;	// current
 		Node p = c;		// previous
-		//System.out.println(c.data + ":" + this.toString());
+		
 		while (c.next != null) {			
 			c = c.next;
 			
@@ -63,25 +63,35 @@ public class Node {
 				has[offset] = true;
 				p = c;
 			}
-			//System.out.println(c.data + ":" + this.toString());
 		}
 		return this;
 	}
 
-	// 미구현
 	public Node removeDuplicationNoBuffer() {
 		Node c = this;	// current
-		//Node p = c;		// previous
-		System.out.println(this.toString());
 		while (c.next != null) {
-			System.out.print(c.data + ":");
-			Node t = c.next;
-			while (t.next != null) {
-				System.out.print(t.data);
-				t = t.next;
-			}
+			c.next = c.next.removeAll(c.data);
 			c = c.next;
-			System.out.println();
+			if (c == null) break;
+		}
+		return this;
+	}
+	
+	public Node removeAll(char c) {
+		Node n = this;
+		if (n.data == c) {
+			if (n.next == null) {
+				return null;
+			} else {
+				return n.next.removeAll(c);
+			}
+		}
+		
+		while (n.next != null) {
+			if (n.next.data == c) {
+				n.next = n.next.next;
+			}
+			n = n.next;
 		}
 		return this;
 	}

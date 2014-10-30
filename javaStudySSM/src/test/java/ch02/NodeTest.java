@@ -2,7 +2,6 @@ package ch02;
 
 import static org.junit.Assert.*;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class NodeTest {
@@ -31,16 +30,29 @@ public class NodeTest {
 	
 	@Test
 	public void testRemoveDuplication_건너띄고중복() {
-		Node n = (new Node('d')).appendToTail('a').appendToTail('t').appendToTail('a').appendToTail('t');
+		Node n = get_datat();
 		assertEquals("dat", n.removeDuplication().toString());
 	}
 	
+	
 	@Test
-	@Ignore("미구현")
 	public void testRemoveDuplicationNoBuffer_2회중복() {
 		Node n = get_daat();
 		assertEquals("dat", n.removeDuplicationNoBuffer().toString());
 	}
+	
+	@Test
+	public void testRemoveDuplicationNoBuffer_3회중복() {
+		Node n = get_daaat();
+		assertEquals("dat", n.removeDuplicationNoBuffer().toString());
+	}
+	
+	@Test
+	public void testRemoveDuplicationNoBuffer_건너띄고중복() {
+		Node n = get_datat();
+		assertEquals("dat", n.removeDuplicationNoBuffer().toString());
+	}
+
 	
 	@Test
 	public void testRemoveOne_2회중복() {
@@ -80,6 +92,10 @@ public class NodeTest {
 	
 	private Node get_daaat() {
 		return (new Node('d')).appendToTail('a').appendToTail('a').appendToTail('a').appendToTail('t');
+	}
+	
+	private Node get_datat() {
+		return (new Node('d')).appendToTail('a').appendToTail('t').appendToTail('a').appendToTail('t');
 	}
 
 }
