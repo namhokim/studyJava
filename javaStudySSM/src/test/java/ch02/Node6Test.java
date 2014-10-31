@@ -16,12 +16,30 @@ public class Node6Test {
 		assertEquals("C", head.next.next.next.next.next.data.toString());
 	}
 	@Test
-	public void testGetCircularNode() {
+	public void testGetCircularNode_비순환1() {
 		Node6 notCircular = new Node6('A');
 		assertEquals(null, notCircular.getCircularNode());
-		
+	}
+	@Test
+	public void testGetCircularNode_비순환2() {
+		Node6 notCircular = new Node6('A');
+		notCircular.appendToTail('B');
+		assertEquals(null, notCircular.getCircularNode());
+	}
+	
+	@Test
+	public void testGetCircularNode_순환1() {
 		Node6 head = getList();
 		assertEquals("C", head.getCircularNode());
+	}
+	
+	@Test
+	public void testGetCircularNode_순환5() {
+		Node6 a = new Node6('A');
+		Node6 b = new Node6('B');
+		a.next = b;
+		b.next = a;
+		assertEquals("A", a.getCircularNode());
 	}
 	
 	private Node6 getList() {

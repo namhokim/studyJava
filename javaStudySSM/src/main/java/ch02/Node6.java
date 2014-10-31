@@ -16,13 +16,16 @@ public class Node6 extends Node<Character> {
 		Node<Character> n = this;
 		
 		while (n.next != null) {
+			Node<Character> s = n.next;
+			System.out.println(s.data);
 			for (int i=0; i<current; i++) {
-				if (travers[i] == n.next) {
-					return n.next;
+				if (travers[i] == s.next) {
+					return s.next;
 				}
-				travers[current++] = (Node6) n.next;
-				n = n.next;
+				travers[current++] = (Node6) s.next;
+				s = s.next;
 			}
+			n = n.next;
 		}
 		return null;
 	}
