@@ -1,18 +1,18 @@
 package ch02;
 
-public class Node {
+public class Node<T> {
 
-	char data;
-	Node next = null;
+	T data;
+	Node<T> next = null;
 	
-	public Node(char c) {
+	public Node(T c) {
 		this.data = c;
 	}
 	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append(this.data);
-		Node n = this;
+		Node<T> n = this;
 		while (n.next != null) {
 			n = n.next;
 			sb.append(n.data);
@@ -20,9 +20,9 @@ public class Node {
 		return sb.toString();
 	}
 
-	public Node appendToTail(char c) {
-		Node end = new Node(c);
-		Node n = this;
+	public Node<T> appendToTail(T c) {
+		Node<T> end = new Node<T>(c);
+		Node<T> n = this;
 		while (n.next != null) {
 			n = n.next;
 		}
@@ -30,8 +30,8 @@ public class Node {
 		return this;
 	}
 	
-	public Node removeOne(char c) {
-		Node n = this;
+	public Node<T> removeOne(T c) {
+		Node<T> n = this;
 		if (n.data == c) {
 			return n.next;	// head 갱신
 		}
@@ -44,41 +44,10 @@ public class Node {
 			n = n.next;
 		}
 		return this;
-	}
-
-	public Node removeDuplication() {
-		boolean[] has = new boolean[Character.MAX_VALUE];
-		has[(int)this.data] = true;
-		
-		Node c = this;	// current
-		Node p = c;		// previous
-		
-		while (c.next != null) {			
-			c = c.next;
-			
-			int offset = (int)c.data;
-			if (has[offset]) {
-				p.next = c.next;
-			} else {
-				has[offset] = true;
-				p = c;
-			}
-		}
-		return this;
-	}
-
-	public Node removeDuplicationNoBuffer() {
-		Node c = this;	// current
-		while (c.next != null) {
-			c.next = c.next.removeAll(c.data);
-			c = c.next;
-			if (c == null) break;
-		}
-		return this;
-	}
+	}	
 	
-	public Node removeAll(char c) {
-		Node n = this;
+	public Node<T> removeAll(T c) {
+		Node<T> n = this;
 		if (n.data == c) {
 			if (n.next == null) {
 				return null;
