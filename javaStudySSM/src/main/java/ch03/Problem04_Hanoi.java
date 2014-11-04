@@ -1,18 +1,20 @@
 package ch03;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Problem04_Hanoi {
 	int numsOfPlate;
-	Stack<Integer>[] t;
+	ArrayList<Stack<Integer>> t;
 	
 	public Problem04_Hanoi(int n) {
 		numsOfPlate = n;
-		t = new Stack[3];
-		t[0] = new Stack<Integer>();
-		t[1] = new Stack<Integer>();
-		t[2] = new Stack<Integer>();
-		fillInitialPlate(t[0]);
+		t = new ArrayList<Stack<Integer>>();
+		t.add(new Stack<Integer>());
+		t.add(new Stack<Integer>());
+		t.add(new Stack<Integer>());
+		
+		fillInitialPlate(t.get(0));
 	}
 
 	private void fillInitialPlate(Stack<Integer> s) {
@@ -30,7 +32,7 @@ public class Problem04_Hanoi {
 			return;
 		}
 		moveTo(start, temp, target, how - 1);
-		t[target].push(t[start].pop());
+		t.get(target).push(t.get(start).pop());
 		moveTo(temp, target, start, how - 1);
 	}
 	
