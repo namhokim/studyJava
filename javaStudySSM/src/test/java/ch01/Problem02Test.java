@@ -5,9 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class Problem02Test {
-	
-	private Problem02 ad;
-	
+
 	private void assertAnagram(boolean isTrue, String a, String b) {
 		Problem02 ad = new Problem02(a, b);
 		assertEquals(isTrue, ad.determine());
