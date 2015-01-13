@@ -46,5 +46,10 @@ public class Problem02Test {
 		assertAnagram(false, "abC", "bcD");
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testIncludeKoreanException() {
+		assertAnagram(false, "한글이", "이글한");
+	}
+	
 
 }
