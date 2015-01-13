@@ -7,64 +7,45 @@ import org.junit.Test;
 public class Problem02Test {
 	
 	private Problem02 ad;
+	
+	private void assertAnagram(boolean isTrue, String a, String b) {
+		Problem02 ad = new Problem02(a, b);
+		assertEquals(isTrue, ad.determine());
+	}
 
 	@Test
-	public void testSame() {
-		
-		ad = new Problem02("a", "a");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("b", "b");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("ab", "ab");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("abc", "abc");
-		assertTrue(ad.determine());
+	public void testSameAnagram() {
+		assertAnagram(true, "a", "a");
+		assertAnagram(true, "b", "b");
+		assertAnagram(true, "ab", "ab");
+		assertAnagram(true, "abc", "abc");
 	}
 	
 	@Test
-	public void testAnagram() {
-		
-		ad = new Problem02("ab", "ba");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("bc", "cb");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("abc", "cab");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("aabc", "abca");
-		assertTrue(ad.determine());
+	public void testRotatedAnagram() {
+		assertAnagram(true, "ab", "ba");
+		assertAnagram(true, "bc", "cb");
+		assertAnagram(true, "abc", "cab");
+		assertAnagram(true, "bca", "abc");
+		assertAnagram(true, "cab", "bca");
+		assertAnagram(true, "aabc", "abca");
 	}
 	
 	@Test
 	public void testNotAnagramInDictionary() {
-		
-		ad = new Problem02("words", "sword");
-		assertTrue(ad.determine());
-		
-		ad = new Problem02("finder", "friend");
-		assertTrue(ad.determine());
+		assertAnagram(true, "words", "sword");
+		assertAnagram(true, "finder", "friend");
 	}
 	
 	@Test
 	public void testNotAnagram() {
-		
-		ad = new Problem02("ab", "bc");
-		assertFalse(ad.determine());
-		
-		ad = new Problem02("abc", "abd");
-		assertFalse(ad.determine());
+		assertAnagram(false, "ab", "bc");
+		assertAnagram(false, "abc", "abd");
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testIncludeUppercaseException() {
-		
-		ad = new Problem02("abC", "bcD");
-		assertFalse(ad.determine());
+		assertAnagram(false, "abC", "bcD");
 	}
 	
 
