@@ -41,6 +41,16 @@ public class Problem02Test {
 	}
 	
 	@Test
+	public void testNotAnagramInDictionary() {
+		
+		ad = new Problem02("words", "sword");
+		assertTrue(ad.determine());
+		
+		ad = new Problem02("finder", "friend");
+		assertTrue(ad.determine());
+	}
+	
+	@Test
 	public void testNotAnagram() {
 		
 		ad = new Problem02("ab", "bc");
@@ -49,5 +59,13 @@ public class Problem02Test {
 		ad = new Problem02("abc", "abd");
 		assertFalse(ad.determine());
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testIncludeUppercaseException() {
+		
+		ad = new Problem02("abC", "bcD");
+		assertFalse(ad.determine());
+	}
+	
 
 }
