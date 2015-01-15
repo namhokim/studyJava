@@ -5,11 +5,16 @@ import java.io.FileNotFoundException;
 public class Runner {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		String filename = "C:/temp/gen3.txt";
+		String filename = "C:/temp/gen5e.txt";
 		InputStreamNumberDataSource source = new InputStreamNumberDataSource(filename);
 		VacantNumberFinder finder = new VacantNumberFinder(source);
-		System.out.println("Vacant Number is " + finder.find());
-		source.close();
+		try {
+			System.out.println("Vacant Number is " + finder.find());
+		} catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			source.close();
+		}
 
 	}
 

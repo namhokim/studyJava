@@ -24,7 +24,7 @@ public class InputStreamNumberDataSource implements NumberDataSource {
 		if (sc.hasNextLong()) {
 			return sc.nextLong();
 		} else {
-			return NumberDataSource.EOF;
+			return NumberDataSource.EOD;
 		}
 	}
 

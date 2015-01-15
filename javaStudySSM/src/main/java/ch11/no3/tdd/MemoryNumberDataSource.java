@@ -17,7 +17,7 @@ public class MemoryNumberDataSource implements NumberDataSource {
 
 	public long getNext() {
 		if (postion >= data.size()) {
-			return NumberDataSource.EOF;
+			return NumberDataSource.EOD;
 		} else {
 			return data.get(postion++);
 		}

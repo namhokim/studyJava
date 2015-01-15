@@ -3,15 +3,19 @@ package ch11.no3.tdd;
 public class VacantNumberFinder {
 	
 	private NumberDataSource dataSource;
-	private long count, min, max, offset;
+	private long count, min, max, range;
 	private boolean[] flag;
 
 	public VacantNumberFinder(NumberDataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
+	/**
+	 * If no vacant number or illegal file format,
+	 * throws {@link IllegalArgumentException}
+	 * @return vacant number
+	 */
 	public long find() {
-		
 		initialize();
 		mark();
 		return getFirstVacantNumber();
@@ -20,20 +24,18 @@ public class VacantNumberFinder {
 	private long getFirstVacantNumber() {
 		for (int i=0; i<flag.length; i++) {
 			if (flag[i]==false) {
-				return (i + offset); 
+				return (i + min); 
 			}
 		}
-		return NumberDataSource.EOF;
+		throw new IllegalArgumentException("No vacant number");
 	}
 
 	private void mark() {
 		dataSource.rewind();
 		long data;
-		while( (data = dataSource.getNext()) != NumberDataSource.EOF) {
-			int position = (int) (data-offset);
-			if (position >= 0 && position < count) {
-				flag[position] = true;
-			}
+		while( (data = dataSource.getNext()) != NumberDataSource.EOD) {
+			int position = (int) (data - min);
+			flag[position] = true;
 		}
 	}
 
@@ -44,7 +46,7 @@ public class VacantNumberFinder {
 		count = 0;
 
 		long data;
-		while( (data = dataSource.getNext()) != NumberDataSource.EOF) {
+		while( (data = dataSource.getNext()) != NumberDataSource.EOD) {
 			if (data < min) {
 				min = data;
 			}
@@ -59,9 +61,11 @@ public class VacantNumberFinder {
 		} else if (min == max) {
 			throw new IllegalArgumentException("Only unique data. (" + min + ")");
 		}
-		flag = new boolean[(int) count];
-		offset = min;
-		//System.out.println("Range: " + min + " ~ " + max + "(count:" + count + ")");
+		
+		range = (max - min + 1);
+		flag = new boolean[(int) range];
+		
+		System.out.printf("Range: %d ~ %d (%d), Count: %d\n", min, max, range, count);
 	}
 	
 }

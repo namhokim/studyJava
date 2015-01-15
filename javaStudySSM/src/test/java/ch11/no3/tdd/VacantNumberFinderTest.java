@@ -18,8 +18,7 @@ public class VacantNumberFinderTest {
 			mmds.add(l);
 		}
 		assertEquals("MemoryNumberDataSource initialize was wrong", data.length, mmds.size());
-		VacantNumberFinder finder =
-				new VacantNumberFinder(mmds);
+		VacantNumberFinder finder = new VacantNumberFinder(mmds);
 		return finder;
 	}
 	
@@ -44,8 +43,20 @@ public class VacantNumberFinderTest {
 		assertEquals(3, finder.find());
 	}
 	
+	
 	@Rule
 	public ExpectedException expectedEx = ExpectedException.none();
+	
+	@Test
+	public final void testFind_TwoButNoVacant_expectEOF() {
+		expectedEx.expect(IllegalArgumentException.class);
+		expectedEx.expectMessage("No vacant number");
+		
+		VacantNumberFinder finder = getFinderInstance(new long[] {
+			1, 1, 2, 1, 2, 1	
+		});
+		finder.find();
+	}
 	
 	@Test
 	public final void testFind_NoData_expectException() {

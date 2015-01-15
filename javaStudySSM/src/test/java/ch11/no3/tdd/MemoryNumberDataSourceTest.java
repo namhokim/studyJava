@@ -30,10 +30,10 @@ public class MemoryNumberDataSourceTest {
 
 	@Test
 	public final void testGetNext() {
-		assertEquals(NumberDataSource.EOF, source.getNext());
+		assertEquals(NumberDataSource.EOD, source.getNext());
 		source.add(2);
 		assertEquals(2, source.getNext());
-		assertEquals(NumberDataSource.EOF, source.getNext());
+		assertEquals(NumberDataSource.EOD, source.getNext());
 	}
 
 	@Test

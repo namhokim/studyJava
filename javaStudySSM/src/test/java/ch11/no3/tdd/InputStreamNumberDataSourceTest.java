@@ -63,7 +63,7 @@ public class InputStreamNumberDataSourceTest {
 		assertEquals(13, source.getNext());
 		assertEquals(14, source.getNext());
 		assertEquals(15, source.getNext());
-		assertEquals(NumberDataSource.EOF, source.getNext());
+		assertEquals(NumberDataSource.EOD, source.getNext());
 	}
 
 	@Test
