@@ -12,14 +12,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ch11.no3.tdd.InputStreamNumberDataSource;
+import ch11.no3.tdd.FileNumberDataSource;
 import ch11.no3.tdd.NumberDataSource;
 
-public class InputStreamNumberDataSourceTest {
+public class FileNumberDataSourceTest {
 	
 	private static File file;
 	private static String filename;
-	private InputStreamNumberDataSource source;
+	private FileNumberDataSource source;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -41,8 +41,8 @@ public class InputStreamNumberDataSourceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		source = new InputStreamNumberDataSource(
-				InputStreamNumberDataSourceTest.filename);
+		source = new FileNumberDataSource(
+				FileNumberDataSourceTest.filename);
 	}
 	
 	@After

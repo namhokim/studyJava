@@ -6,14 +6,14 @@ public class Runner {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		String filename = "C:/temp/gen5e.txt";
-		InputStreamNumberDataSource source = new InputStreamNumberDataSource(filename);
+		FileNumberDataSource source = new FileNumberDataSource(filename);
 		VacantNumberFinder finder = new VacantNumberFinder(source);
 		try {
 			System.out.println("Vacant Number is " + finder.find());
 		} catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		} finally {
-			source.close();
+			//source.close();
 		}
 
 	}

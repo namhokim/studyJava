@@ -1,5 +1,10 @@
 package ch11.no3.tdd;
 
+/**
+ * 비어있는 숫자를 찾아준다.
+ * @author namo
+ *
+ */
 public class VacantNumberFinder {
 	
 	private NumberDataSource dataSource;
@@ -11,9 +16,9 @@ public class VacantNumberFinder {
 	}
 	
 	/**
-	 * If no vacant number or illegal file format,
-	 * throws {@link IllegalArgumentException}
-	 * @return vacant number
+	 * 비어있는 숫자가 없거나 데이터가 잘못되었을 경우에는
+	 *  {@link IllegalArgumentException}를 던진다.
+	 * @return 비어있는 숫자
 	 */
 	public long find() {
 		initialize();
@@ -65,7 +70,7 @@ public class VacantNumberFinder {
 		range = (max - min + 1);
 		flag = new boolean[(int) range];
 		
-		System.out.printf("Range: %d ~ %d (%d), Count: %d\n", min, max, range, count);
+		//System.out.printf("Range: %d ~ %d (%d), Count: %d\n", min, max, range, count);
 	}
 	
 }
