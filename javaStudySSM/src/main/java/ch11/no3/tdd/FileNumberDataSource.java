@@ -47,7 +47,7 @@ public class FileNumberDataSource implements NumberDataSource, Closeable {
 	}
 	
 	/**
-     * 이 데이터 소스에서 발생했던 <code>IOException</code> 를 반환한다.
+     * 이 데이터 소스에서 발생했던 <code>java.io.IOException</code> 를 반환한다.
      * 이 메서드는 예외가 없었을 경우에는 <code>null</code>을 반환한다.
      *
      * @return 이 데이터 소스에서 발생했던 마지막 예외
