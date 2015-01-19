@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 public class Runner {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		String filename = "C:/temp/gen5e.txt";
+		String filename = "D:/temp/40billion/gen.txt";
 		FileNumberDataSource source = new FileNumberDataSource(filename);
 		VacantNumberFinder finder = new VacantNumberFinder(source);
 		try {
@@ -13,7 +13,7 @@ public class Runner {
 		} catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		} finally {
-			//source.close();
+			source.close();
 		}
 
 	}
