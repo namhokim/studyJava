@@ -4,9 +4,9 @@ import java.util.*;
 
 public class HangulMorphemeCounter {
 	
-	final static int HangulSyllablesBegin = 0xac00;
-	final static int HangulSyllablesEnd = 0xd7af;
-	final static int HangulSyllablesCount = 0xd7af - 0xac00 + 1;
+	final static int HangulSyllablesBegin = '가';
+	final static int HangulSyllablesEnd = '힣';
+	final static int HangulSyllablesCount = HangulSyllablesEnd - HangulSyllablesBegin + 1;
 	private int count[] = new int[HangulSyllablesCount];
 	
 	private String _string;
