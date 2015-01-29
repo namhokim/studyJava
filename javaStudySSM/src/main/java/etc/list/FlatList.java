@@ -29,12 +29,11 @@ public class FlatList {
 		flat(list, set);
 		return new ArrayList<Integer>(set);
 	}
-	
-	@SuppressWarnings("unchecked")
-	private static void flat(List<Object> list, Set<Integer> set) {
+
+	private static void flat(List<?> list, Set<Integer> set) {
 		for (Object o : list) {
 			if (o instanceof List) {
-				flat((List<Object>)o, set);
+				flat((List<?>)o, set);
 			} else {
 				set.add((Integer)o);
 			}
