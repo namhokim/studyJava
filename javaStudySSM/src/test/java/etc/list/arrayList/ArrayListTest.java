@@ -15,5 +15,16 @@ public class ArrayListTest {
 		assertEquals(1, al.size());
 		assertEquals(100, al.get(0).intValue());
 	}
+	
+	@Test
+	public void test() {
+		assertTrue(ArrayListTest.isOdd(1));
+		assertFalse(ArrayListTest.isOdd(2));
+		
+	}
+	
+	public static boolean isOdd(int i) {
+		return i % 2 == 1;
+	}
 
 }
